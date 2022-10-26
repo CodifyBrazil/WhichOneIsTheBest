@@ -14,37 +14,41 @@ let photos: string[] = [];
 export const Post = () => {
 
     const { getAllInfo } = useContext(Context);
-    const toast = useToast();
 
     useEffect(()=> {
         nextImage();
     }, [])
 
-    const [numberImage, setNumberImage] = useState(0);
+    const [numberImage, setNumberImage] = useState<number>(0);
+    const [page, setPage] = useState<number>(0)
     const [image, setImage] = useState<string>('carregando');
-    const [displayAnimation, setDisplayAnimation] = useState<'none'|'initial'>('none')
+    const [displayAnimation, setDisplayAnimation] = useState<'none'|'initial'>('none');
 
     const randonClickJoinImage = () => {
         setDisplayAnimation('initial')
         setTimeout(() => {
-            setDisplayAnimation('none')
+            setDisplayAnimation('none');
         },2000);
     }
     
 
     const nextImage = async (voting?: number) => {
-        if(numberImage < 25 && photos.length > 20){
-            randonClickJoinImage();
-            
+        
+        if(numberImage < 27 && photos.length > 20){
+            randonClickJoinImage();            
+            setNumberImage(numberImage+1);
+            console.log(numberImage, 'nao buscou ... ');
         }
-        else{
-            const data = await getAllInfo();      
+        else {
+            setPage(page+1);
+            setNumberImage(0);
+            const data = await getAllInfo(page);
             photos = data.map((item)=> {
                 return item.urls.full
             });            
+            console.log(numberImage, 'buscou ... ', photos);
         }
-        console.log((numberImage < 25 && photos.length > 20?true:false));
-        setNumberImage(numberImage+1);
+        
         setImage(photos[numberImage]);
                 
     }
