@@ -3,14 +3,14 @@ import { ContextType } from '../types/types'
 import { API } from '../service/api';
 
 type Props = {
-    getAllInfo: () => Promise<ContextType>
+    getAllInfo: () => Promise<ContextType[]>
 }
 
 export const Context = createContext({} as Props);
 
 
 const getAllInfo = async () => {
-    const images = await API.getAllImages();
+    const images: ContextType[] = await API.getAllImages();
     return images;
 }
 

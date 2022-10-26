@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
     })
 
 export const API = {
-    getAllImages: async (id?: number): Promise<ContextType> => {
+    getAllImages: async (id?: number): Promise<ContextType[]> => {
         let idNumber = id ? `/${id}` : '';
         const {data} = await axiosInstance.get(`/photos${idNumber}?per_page=30`);
         return data

@@ -2,8 +2,13 @@ import { Box, Button, Image, useToast } from "@chakra-ui/react";
 import { useState, useContext, useEffect } from "react";
 
 import { Context } from '../context/Context';
+import { ContextType } from '../types/types';
+
 import Heart from '../assets/heart.png';
 import Close from '../assets/close1.png';
+
+
+let photos: string[] = [];
 
 export const Post = () => {
 
@@ -14,28 +19,26 @@ export const Post = () => {
         nextImage();
     }, [])
 
-    let photos: string[] = [];
     const [numberImage, setNumberImage] = useState(0);
     const [image, setImage] = useState<string>('carregando');
-
-    const getImage = async () => {
-        
-    }
 
     const nextImage = async () => {
         if(numberImage < 25 && photos.length > 20){
             toast({
                 title:`Foto (${numberImage})`,
                 position: 'top',
-                variant: 'subtle'
+                variant: 'subtle',
+                duration: 900,
+
             });
             console.log('nao requisitou servidor ...');
         }
         else{
-            const data = await getAllInfo();            
-            for(let i = 0; i<30; i++){
-                photos.push(data[i].urls.full);
-            }
+            const data = await getAllInfo();      
+            photos = data.map((item)=> {
+                return item.urls.full
+            });
+            
             console.log('requisitou servidor ...');
         }
         console.log((numberImage < 25 && photos.length > 20?true:false));
