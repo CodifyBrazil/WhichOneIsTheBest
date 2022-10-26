@@ -1,4 +1,4 @@
-import { Box, Image,  Text } from "@chakra-ui/react"
+import { Box, Image } from "@chakra-ui/react";
 
 type Props = {
     icon?: string;
@@ -17,7 +17,6 @@ export const ImagePostHome = ({icon, colorBorder, likes}: Props) => {
             marginTop={'10px'}
             src={`${icon}`}
         />
-            <Text marginTop={'10px'} fontWeight={'bold'} fontSize='14px' color='#fff'>{likes}</Text>
 
         </Box>
     )
