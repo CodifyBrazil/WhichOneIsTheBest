@@ -1,15 +1,19 @@
-import { Box, Button, Flex, Image, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Text, useToast } from "@chakra-ui/react";
 import { useState, useContext, useEffect } from "react";
 import Lottie from "react-lottie";
 
 import { Context } from '../context/Context';
+import {PostPhoto} from '../types/types';
 
+import Heart_Salve from '../assets/love.png';
+import Like from '../assets/like.png';
 import Heart from '../assets/heart.png';
 import Close from '../assets/close1.png';
 import HeartAnimattion from '../assets/heart-animation.json';
+import { ImagePostHome } from "./ImagePostHome";
 
 
-let photos: string[] = [];
+let photos: PostPhoto[] = [];
 
 export const Post = () => {
 
@@ -21,7 +25,7 @@ export const Post = () => {
 
     const [numberImage, setNumberImage] = useState<number>(0);
     const [page, setPage] = useState<number>(0)
-    const [image, setImage] = useState<string>('carregando');
+    const [image, setImage] = useState<PostPhoto>();
     const [displayAnimation, setDisplayAnimation] = useState<'none'|'initial'>('none');
 
     const randonClickJoinImage = () => {
@@ -37,16 +41,19 @@ export const Post = () => {
         if(numberImage < 27 && photos.length > 20){
             randonClickJoinImage();            
             setNumberImage(numberImage+1);
-            console.log(numberImage, 'nao buscou ... ');
         }
         else {
             setPage(page+1);
             setNumberImage(0);
             const data = await getAllInfo(page);
             photos = data.map((item)=> {
-                return item.urls.full
+                const username = item.user.username;
+                const userImage = item.user.profile_image.medium;
+                const idUser = item.user.id;
+                const photoImage = item.urls.full;
+                const likes = item.likes
+                return {username, userImage, idUser, likes, photoImage}
             });            
-            console.log(numberImage, 'buscou ... ', photos);
         }
         
         setImage(photos[numberImage]);
@@ -60,7 +67,7 @@ export const Post = () => {
             <Image 
             w={'100%'}
             h='100vh'
-            src={`${image}`}
+            src={`${image?.photoImage}`}
             objectFit={'cover'}/>
 
             <Flex
@@ -74,11 +81,7 @@ export const Post = () => {
                     options={{
                         loop: true,
                         autoplay: false,
-                        animationData: HeartAnimattion,
-
-                        // rendererSettings: {
-                        // preserveAspectRatio: "xMidYMid slice",
-                        // },
+                        animationData: HeartAnimattion
                     }}
                     height={"5%"}
                     width={"40%"}
@@ -89,6 +92,22 @@ export const Post = () => {
             </Flex>
         </Box>
 
+        <Flex 
+        flexDirection={'column'}
+        bg={'blackAlpha.600'} 
+        w='70px' 
+        pos='absolute' 
+        mt='-400px' 
+        ml='80%'
+        borderRadius={'40px'}
+        alignItems={'center'}>
+
+            <ImagePostHome icon={image?.userImage} colorBorder='#04e5f9'/>
+            <ImagePostHome icon={Like} likes={image?.likes} colorBorder='#3bef7a'/>
+            <ImagePostHome icon={Heart}/>        
+            
+            
+        </Flex>
         
 
         <Box pos={'absolute'} bgGradient='linear(to-t, #111 20%, transparent 70%)' w='100%' h='150px' mt='-150px' display={'flex'} alignItems='center' justifyContent={'space-around'}>

@@ -73,3 +73,11 @@ export type InterativsPosts= {
 	like: number;
 	dis_like: number;
 }
+
+export type PostPhoto = {
+	username: string;
+	userImage: string;
+	idUser: string;
+	photoImage: string;
+	likes: number
+}
