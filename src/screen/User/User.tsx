@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../../context/Context";
 import ArrowLeft from '../../assets/arrow.png';
-import {ImagePost} from "./components/image";
+import {ImagePost} from "./components/Image";
 
 export const User = () => {
     useEffect(()=> {
