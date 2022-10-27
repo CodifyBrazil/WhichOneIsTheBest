@@ -1,11 +1,14 @@
-import axios from "axios";
+// import { setupCache } from 'axios-cache-adapter';
+import axios from 'axios';
 import { ContextType, InterativsPosts } from "../types/types";
+
 
 const axiosInstance_EXTERNAL = axios.create({
     baseURL: 'https://api.unsplash.com',
     headers: {
             'Authorization': import.meta.env.VITE_SECRET_KEY
-            }
+            },
+    
     });
 
 const axiosInstance_INTERNAL = axios.create({
