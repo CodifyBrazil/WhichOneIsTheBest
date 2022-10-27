@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { ContextProvider } from './context/Context';
-import { Home } from './screen/Home';
-import { User } from './screen/User';
+import { Home } from './screen/Home/Home';
+import { User } from './screen/User/User';
 
 
 const App = () => {

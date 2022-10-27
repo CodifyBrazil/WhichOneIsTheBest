@@ -2,13 +2,13 @@ import { Box, Button, Flex, Image } from "@chakra-ui/react";
 import { useState, useContext, useEffect } from "react";
 import Lottie from "react-lottie";
 
-import { Context } from '../context/Context';
-import { MenuPostPhoto } from '../types/types';
+import { Context } from '../../../context/Context';
+import { MenuPostPhoto } from '../../../types/types';
 
-import Like from '../assets/like.png';
-import Heart from '../assets/heart.png';
-import Close from '../assets/close1.png';
-import HeartAnimattion from '../assets/heart-animation.json';
+import Like from '../../../assets/like.png';
+import Heart from '../../../assets/heart.png';
+import Close from '../../../assets/close1.png';
+import HeartAnimattion from '../../../assets/heart-animation.json';
 import { MenuPostHome } from "./MenuPostHome";
 
 

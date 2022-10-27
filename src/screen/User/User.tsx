@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { Context } from "../context/Context";
+import { Context } from "../../context/Context";
 
 
 export const User = () => {
@@ -15,7 +15,6 @@ export const User = () => {
 
     const getInfoProfile = async () => {
         const data = await getAllInfo({username})
-        console.log(data);    
         return data;
     }
 
