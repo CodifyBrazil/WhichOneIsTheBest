@@ -21,6 +21,7 @@ export const API = {
 }
 
 export const API_INTERNAL = {
+    //salve data
     postInterativsPosts: ({ url }: InterativsPosts) => {
 
     }
