@@ -74,7 +74,7 @@ export type InterativsPosts= {
 	dis_like: number;
 }
 
-export type PostPhoto = {
+export type MenuPostPhoto = {
 	username: string;
 	userImage: string;
 	idUser: string;

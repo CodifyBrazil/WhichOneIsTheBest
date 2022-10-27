@@ -13,9 +13,10 @@ const axiosInstance_INTERNAL = axios.create({
 })
 
 export const API = {
-    getAllImages: async (page?: number): Promise<ContextType[]> => {
+    getAllImages: async ({username, page}: {username?: string, page?: number}): Promise<ContextType[]> => {
         let numberPage = page ? `&page=${page}` : '';
-        const {data} = await axiosInstance_EXTERNAL.get(`/photos?per_page=30${numberPage}`);
+        let usernameProfile = username ? `&username=${username}` : '';
+        const {data} = await axiosInstance_EXTERNAL.get(`/photos?per_page=30${numberPage}${usernameProfile}`);
         return data
     }
 }

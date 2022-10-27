@@ -1,31 +1,30 @@
-import { Box, Button, Flex, Image, Text, useToast } from "@chakra-ui/react";
+import { Box, Button, Flex, Image } from "@chakra-ui/react";
 import { useState, useContext, useEffect } from "react";
 import Lottie from "react-lottie";
 
 import { Context } from '../context/Context';
-import {PostPhoto} from '../types/types';
+import { MenuPostPhoto } from '../types/types';
 
-import Heart_Salve from '../assets/love.png';
 import Like from '../assets/like.png';
 import Heart from '../assets/heart.png';
 import Close from '../assets/close1.png';
 import HeartAnimattion from '../assets/heart-animation.json';
-import { ImagePostHome } from "./ImagePostHome";
+import { MenuPostHome } from "./MenuPostHome";
 
 
-let photos: PostPhoto[] = [];
+let photos: MenuPostPhoto[] = [];
 
 export const Post = () => {
 
     const { getAllInfo } = useContext(Context);
 
     useEffect(()=> {
-        nextImage();
+        nextImage({});
     }, [])
 
     const [numberImage, setNumberImage] = useState<number>(0);
     const [page, setPage] = useState<number>(0)
-    const [image, setImage] = useState<PostPhoto>();
+    const [image, setImage] = useState<MenuPostPhoto>();
     const [displayAnimation, setDisplayAnimation] = useState<'none'|'initial'>('none');
 
     const randonClickJoinImage = () => {
@@ -36,16 +35,16 @@ export const Post = () => {
     }
     
 
-    const nextImage = async (voting?: number) => {
+    const nextImage = async ({id, voting}:{id?:string, voting?: number}) => {
         
         if(numberImage < 27 && photos.length > 20){
-            randonClickJoinImage();            
+            randonClickJoinImage();   
             setNumberImage(numberImage+1);
         }
         else {
             setPage(page+1);
             setNumberImage(0);
-            const data = await getAllInfo(page);
+            const data = await getAllInfo({page});
             photos = data.map((item)=> {
                 const username = item.user.username;
                 const userImage = item.user.profile_image.medium;
@@ -102,9 +101,9 @@ export const Post = () => {
         borderRadius={'40px'}
         alignItems={'center'}>
 
-            <ImagePostHome icon={image?.userImage} colorBorder='#04e5f9'/>
-            <ImagePostHome icon={Like} likes={image?.likes} colorBorder='#3bef7a'/>
-            <ImagePostHome icon={Heart}/>        
+            <MenuPostHome icon={image?.userImage} colorBorder='#04e5f9' username={image?.username}/>
+            <MenuPostHome icon={Like} likes={image?.likes} colorBorder='#3bef7a'/>
+            <MenuPostHome icon={Heart}/>        
             
             
         </Flex>
@@ -112,7 +111,7 @@ export const Post = () => {
 
         <Box pos={'absolute'} bgGradient='linear(to-t, #111 20%, transparent 70%)' w='100%' h='150px' mt='-150px' display={'flex'} alignItems='center' justifyContent={'space-around'}>
             <Button 
-            onClick={(e)=> nextImage(0)} 
+            onClick={(e)=> nextImage({voting:0})} 
             borderRadius={'100%'} 
             w='70px' h='70px'>
                 
@@ -120,7 +119,7 @@ export const Post = () => {
                 </Button>
 
             <Button 
-            onClick={(e)=> nextImage(1)} 
+            onClick={(e)=> nextImage({voting: 1})} 
             borderRadius={'100%'} 
             w='70px' 
             h='70px'>
