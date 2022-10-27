@@ -11,7 +11,7 @@ type Props = {
 export const MenuPostHome = ({icon, colorBorder, username}: Props) => {
     return (
         <Box display={'flex'} flexDirection='column' alignItems={'center'}>
-            <Link  to={`/user/${username}`}>
+            <Link  to={(username?`/user/${username}`:'')}>
                 <Image 
                 borderRadius={'full'}
                 border={`2px solid ${colorBorder}`}
