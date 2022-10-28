@@ -16,13 +16,14 @@ export const ImagePost = ({urlImage, likes}: ImageType) => {
         borderRadius={'4px'}
         margin='auto'>
 
-            <Flex h={'300px'} bg='#fff' borderBottomEndRadius={'4px'} boxShadow={'xl'} flexDirection='column'>
+            <Flex h={'300px'} alignItems='center' bg='#fff' borderBottomEndRadius={'4px'} boxShadow={'xl'} flexDirection='column'>
                 <Image  
                 src={urlImage}  
                 borderRadius={'4px'}
                 objectFit='cover' 
                 width={'190px'} 
-                h='300px'/>
+                h='300px'
+                m='auto'/>
                 <Box 
                 display={'flex'} 
                 pos='absolute' 
@@ -33,7 +34,7 @@ export const ImagePost = ({urlImage, likes}: ImageType) => {
                 w={'188px'}
                 h='50px'
                 top={'247px'}
-                backdropFilter={'blur(5px)'}>
+                backdropFilter={'auto'}>
                     <Image src={Heart} w='20px' ml={'10px'}/>
                     <Text fontSize='13px' color={'#fff'} fontWeight={'bold'} ml={'12px'}>{likes}</Text>
                 </Box>
