@@ -1,5 +1,8 @@
-export const setLocalStorage = () => {
+type LocalStorage = {
+    session?: string;
+    valuePhoto?: number
+}
+
+export const isLocalStorage = ({session, valuePhoto}: LocalStorage) => {
     
 }
-export const getLocalStorage = () => {}
-export const mountLocalStorage = () => {}

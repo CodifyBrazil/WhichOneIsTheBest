@@ -4,6 +4,7 @@ import Lottie from "react-lottie";
 
 import { Context } from '../../../context/Context';
 import { MenuPostPhoto } from '../../../types/types';
+import { isLocalStorage } from '../../../utils/localStore';
 
 import Like from '../../../assets/like.png';
 import Heart from '../../../assets/heart.png';
@@ -34,9 +35,7 @@ export const Post = () => {
         },2000);
     }
 
-    const verifyLocalStorage = () => {
-        
-    }
+
     
 
     const nextImage = async ({id, voting}:{id?:string, voting?: number}) => {
@@ -113,7 +112,7 @@ export const Post = () => {
         </Flex>
         
 
-        <Box pos={'absolute'} bgGradient='linear(to-t, #111 20%, transparent 70%)' w='100%' h='150px' mt='-150px' display={'flex'} alignItems='center' justifyContent={'space-around'}>
+        <Box pos={'absolute'} bgGradient='linear(to-t, #111 30%, transparent 80%)' w='100%' h='150px' mt='-150px' display={'flex'} alignItems='center' justifyContent={'space-around'}>
             <Button 
             onClick={(e)=> nextImage({voting:0})} 
             borderRadius={'100%'} 
