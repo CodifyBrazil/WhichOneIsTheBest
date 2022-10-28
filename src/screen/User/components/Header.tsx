@@ -18,7 +18,7 @@ export const Header = ({user, userImage}: Props) => {
                 </Button>            
             </Box>
             <Flex alignItems={'center'} mr='7px'>
-                <Text textColor={'#fff'} mr='7px' fontWeight='bold'>{user}</Text>
+                <Text textColor={'#fff'} mr='7px' fontFamily={'sans-serif'} fontWeight='bold'>{user}</Text>
                 <Image src={userImage} borderRadius='full' border={'2px solid #fff'}/>
             </Flex>
             
