@@ -7,7 +7,7 @@ export const Header = () => {
         justifyContent={'flex-end'} 
         alignItems='center'
         pos={'absolute'}
-        w={'100%'} 
+        w={{base:'100%', md:'40%'}} 
         h='50px' 
         bg={'#111111'} 
         opacity={'0.1'} 

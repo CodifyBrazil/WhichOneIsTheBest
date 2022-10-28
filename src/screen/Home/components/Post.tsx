@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, useToast } from "@chakra-ui/react";
 import { useState, useContext, useEffect } from "react";
 import Lottie from "react-lottie";
 
@@ -17,6 +17,8 @@ let photos: MenuPostPhoto[] = [];
 
 export const Post = () => {
 
+    const toast = useToast();
+
     const { getAllInfo } = useContext(Context);
 
     useEffect(()=> {
@@ -24,7 +26,7 @@ export const Post = () => {
     }, [])
 
     const [numberImage, setNumberImage] = useState<number>(0);
-    const [page, setPage] = useState<number>(0)
+    const [page, setPage] = useState<number>(1)
     const [image, setImage] = useState<MenuPostPhoto>();
     const [displayAnimation, setDisplayAnimation] = useState<'none'|'initial'>('none');
 
@@ -36,7 +38,6 @@ export const Post = () => {
     }
 
 
-    
 
     const nextImage = async ({id, voting}:{id?:string, voting?: number}) => {
         
@@ -47,7 +48,17 @@ export const Post = () => {
         else {
             setPage(page+1);
             setNumberImage(0);
+            photos = [];
             const data = await getAllInfo({page});
+
+            toast({
+                title: 'Buscando novas fotos.',
+                status: 'success',
+                duration: 700,
+                isClosable: true,
+                position: "top"
+              });
+            
             photos = data.map((item)=> {
                 const username = item.user.username;
                 const userImage = item.user.profile_image.medium;
