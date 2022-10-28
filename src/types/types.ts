@@ -81,3 +81,9 @@ export type MenuPostPhoto = {
 	photoImage: string;
 	likes: number
 }
+
+export type ImagesUserProfile = {
+	urlImage: string;
+	like?: number;
+	userProfileImage: string;
+}

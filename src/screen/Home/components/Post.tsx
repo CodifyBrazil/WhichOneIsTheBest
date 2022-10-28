@@ -49,7 +49,7 @@ export const Post = () => {
                 const username = item.user.username;
                 const userImage = item.user.profile_image.medium;
                 const idUser = item.user.id;
-                const photoImage = item.urls.full;
+                const photoImage = item.urls.regular;
                 const likes = item.likes
                 return {username, userImage, idUser, likes, photoImage}
             });            
