@@ -8,7 +8,7 @@ type Props = {
 
 export const Header = ({user, userImage}: Props) => {
     return (
-        <Flex bg='#111' justifyContent={'space-between'} h='50px' alignItems={'center'}>
+        <Flex bg='blackAlpha.800' justifyContent={'space-between'} h='50px' alignItems={'center'}>
             <Box ml={'7px'} borderRadius={'full'}>
                 <Button 
                 onClick={() => history.go(-1)}

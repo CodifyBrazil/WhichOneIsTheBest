@@ -22,7 +22,8 @@ export const User = () => {
             const urlImage = item.urls.small;
             const like = item.likes;
             const userProfileImage = item.user.profile_image.small;
-            return {urlImage, like, userProfileImage}
+            const download_link = item.links.download;
+            return {urlImage, like, userProfileImage, download_link}
         });
         setPhotos(images);
         setUserProfileImage(photos[0].userProfileImage);
@@ -34,7 +35,7 @@ export const User = () => {
             <Header user={`${username}`} userImage={userProfileImage}/>
             
             <Flex wrap={'wrap'} bg='#fafafa'>
-                {photos.map((item, index)=>(<ImagePost urlImage={item.urlImage} likes={item.like} key={index}/>))}
+                {photos.map((item, index)=>(<ImagePost urlImage={item.urlImage} likes={item.like}  key={index}/>))}
             </Flex>
         </Box>
     )

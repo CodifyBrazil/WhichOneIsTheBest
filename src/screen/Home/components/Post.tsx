@@ -33,6 +33,10 @@ export const Post = () => {
             setDisplayAnimation('none');
         },2000);
     }
+
+    const verifyLocalStorage = () => {
+        
+    }
     
 
     const nextImage = async ({id, voting}:{id?:string, voting?: number}) => {

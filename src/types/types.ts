@@ -86,4 +86,5 @@ export type ImagesUserProfile = {
 	urlImage: string;
 	like?: number;
 	userProfileImage: string;
+	download_link: string;
 }

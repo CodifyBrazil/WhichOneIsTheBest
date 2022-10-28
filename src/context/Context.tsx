@@ -1,9 +1,9 @@
-import { createContext, ReactNode } from 'react';
+import { createContext, ReactNode, useState} from 'react';
 import { ContextType } from '../types/types'
 import { API } from '../service/api';
 
 type Props = {
-    getAllInfo: ({username, page}: {username?: string, page?: number}) => Promise<ContextType[]>
+    getAllInfo: ({username, page}: {username?: string, page?: number}) => Promise<ContextType[]>;
 }
 
 export const Context = createContext({} as Props);
