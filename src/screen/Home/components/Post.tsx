@@ -16,8 +16,8 @@ import { MenuPostHome } from "./MenuPostHome";
 
 let photos: MenuPostPhoto[] = [];
 const cookie = new Cookie;
-
 export const Post = () => {
+    
 
     const toast = useToast();
 
@@ -26,10 +26,10 @@ export const Post = () => {
     useEffect(()=> {
         nextImage({});
     }, []);
-
+    
     const { valuePhoto, pagePhoto } = cookie.get('dataUser');
 
-    const [numberImage, setNumberImage] = useState<number>(valuePhoto);
+    const [numberImage, setNumberImage] = useState<number>(valuePhoto===27?0:valuePhoto);
     const [page, setPage] = useState<number>(pagePhoto);
     const [image, setImage] = useState<MenuPostPhoto>();
     const [displayAnimation, setDisplayAnimation] = useState<'none'|'initial'>('none');
@@ -45,7 +45,7 @@ export const Post = () => {
         
         if(numberImage < 27 && photos.length > 20){
             randonClickJoinImage();   
-            setNumberImage(numberImage+1);
+            setNumberImage(0);
         }
         else {
             setPage(page);
@@ -70,12 +70,12 @@ export const Post = () => {
                 return {username, userImage, idUser, likes, photoImage}
             });            
         }
-        
+        console.log(numberImage ,cookie.get('dataUser'));
         setImage(photos[numberImage]);
                 
     }
 
-    isLocalStorage({valuePhoto: numberImage, pagePhoto: page});
+    isLocalStorage({ valuePhoto: numberImage, pagePhoto: page });
     // console.log(cookie.get('dataUser'));
 
     return (
