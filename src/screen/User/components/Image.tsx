@@ -29,11 +29,9 @@ export const ImagePost = ({urlImage, likes}: ImageType) => {
                 flexDirection='column' 
                 justifyContent={'center'}  
                 mt='4px'
-                // bg='whiteAlpha.500'
                 w={'188px'}
                 h='50px'
                 top={'247px'}
-                // backdropFilter={'blur(5px)'} 
                 >
                     <Flex w='50px' flexDirection={'column'} alignItems='center'>
                         <Image src={Heart} w='25px' ml={'10px'}/>

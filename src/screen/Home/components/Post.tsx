@@ -73,7 +73,6 @@ export const Post = () => {
                 return {username, userImage, idUser, likes, photoImage}
             });            
         }
-        console.log(numberImage ,cookie.get('dataUser'));
         setImage(photos[numberImage]);
                 
     }
