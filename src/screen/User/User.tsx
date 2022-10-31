@@ -1,4 +1,4 @@
-import { Box, Flex, Skeleton, Spinner, Stack } from "@chakra-ui/react";
+import { Box, Button, Flex, Spinner, useDisclosure } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../../context/Context";
@@ -13,6 +13,7 @@ export const User = () => {
 
     const [photos, setPhotos] = useState<ImagesUserProfile[]>([]);
     const [userProfileImage, setUserProfileImage] = useState('');
+    const [quantImage, setQuantImage] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
     const { getAllInfo } = useContext(Context);
     const {username} = useParams();
@@ -30,13 +31,14 @@ export const User = () => {
         });
         setPhotos(images);
         setLoading(false);
+        setQuantImage(images.length)
         
     }
     
    
     return (
         <Box>
-            <Header user={`${username}`} userImage={userProfileImage}/>
+            <Header user={`${username}`} quantImages={quantImage} userImage={userProfileImage}/>
             {loading&&
             <Flex justifyContent={'center'} >
                 <Spinner 
@@ -51,6 +53,9 @@ export const User = () => {
             
             <Flex wrap={'wrap'} bg='#fafafa'>
                 {photos.map((item, index)=>(<ImagePost urlImage={item.urlImage} likes={item.like}  key={index}/>))}
+            </Flex>
+            <Flex justifyContent={'center'} mt='10px' marginBottom={'30px'}>
+                <Button>Carregar mais ...</Button>
             </Flex>
         </Box>
     )
