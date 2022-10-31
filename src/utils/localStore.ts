@@ -6,7 +6,9 @@ type LocalStorage = {
     session?: string;
     valuePhoto?: number;
     pagePhoto?: number;
+    urls?:string[]
 }
+
 
 export const isLocalStorage = ({session, valuePhoto, pagePhoto}: LocalStorage) => {
     if (cookies.get('dataUser')) {
@@ -20,12 +22,8 @@ export const isLocalStorage = ({session, valuePhoto, pagePhoto}: LocalStorage) =
     else{
         const randomSessionUser = Math.floor(Math.random() * 999999999999999).toString();
 
-        cookies.set('dataUser', {session: randomSessionUser,valuePhoto: 1, pagePhoto: 1});
+        cookies.set('dataUser', {session: randomSessionUser,valuePhoto: 1, pagePhoto: 0});
         console.log(cookies.get('dataUser'));
         return false;      
     }
 }
-
-
-// salve page and numberPage in localStorage or coockie for after
-// 8485103657129  
