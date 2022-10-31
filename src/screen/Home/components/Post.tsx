@@ -113,17 +113,16 @@ export const Post = () => {
 
         <Flex 
         flexDirection={'column'}
-        bg={'blackAlpha.600'} 
-        w='70px' 
+        w='50px' 
         pos='absolute' 
-        mt='-400px' 
-        ml='80%'
+        mt='-200px' 
+        ml='82%'
         borderRadius={'40px'}
         alignItems={'center'}>
 
             <MenuPostHome icon={image?.userImage} colorBorder='#04e5f9' username={image?.username}/>
-            <MenuPostHome icon={Like} likes={image?.likes} colorBorder='#3bef7a'/>
-            <MenuPostHome icon={Heart}/>        
+            {/* <MenuPostHome icon={Like} likes={image?.likes} colorBorder='#3bef7a'/>
+            <MenuPostHome icon={Heart}/>         */}
             
             
         </Flex>

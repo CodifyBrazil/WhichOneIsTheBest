@@ -9,18 +9,16 @@ export const Header = () => {
         pos={'absolute'}
         w={{base:'100%', md:'40%'}} 
         h='50px' 
-        bg={'#111111'} 
-        opacity={'0.1'} 
-        _hover={{opacity:'.8'}} 
-        transition='all 0.4s ease'
+        bg={'transparent'} 
+        opacity={''} 
         display={'flex'}> 
             <Image 
             boxSize={'40px'} 
             objectFit='cover' 
-            src='https://bit.ly/dan-abramov' 
+            src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThvVtjXkqt6qMUIFbUBjvFNlIs2oL4P_xVqA&usqp=CAU' 
             borderRadius={'full'}
             marginRight='20px'
-            border='3px solid #3aabfc'/>
+            border='3px solid #3bef7a'/>
         </Box>
     )
 }

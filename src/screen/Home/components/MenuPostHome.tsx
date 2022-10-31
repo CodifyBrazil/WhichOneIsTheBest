@@ -15,8 +15,9 @@ export const MenuPostHome = ({icon, colorBorder, username}: Props) => {
                 <Image 
                 borderRadius={'full'}
                 border={`2px solid ${colorBorder}`}
-                w={'50px'}
-                h='50px'
+                w={'40px'}
+                h='40px'
+                boxShadow={'xl'}
                 marginTop={'10px'}
                 src={`${icon}`}
             />
