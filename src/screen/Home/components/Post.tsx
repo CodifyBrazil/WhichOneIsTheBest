@@ -7,8 +7,9 @@ import { Context } from '../../../context/Context';
 import { MenuPostPhoto } from '../../../types/types';
 import { isLocalStorage } from '../../../utils/localStore';
 
-import Like from '../../../assets/like.png';
+import Like from '../../../assets/love.png';
 import Heart from '../../../assets/heart.png';
+// import Save from '../../../assets/archive.png';
 import Close from '../../../assets/close1.png';
 import HeartAnimattion from '../../../assets/heart-animation.json';
 import { MenuPostHome } from "./MenuPostHome";
@@ -115,14 +116,14 @@ export const Post = () => {
         flexDirection={'column'}
         w='50px' 
         pos='absolute' 
-        mt='-200px' 
+        mt='-250px' 
         ml='82%'
         borderRadius={'40px'}
         alignItems={'center'}>
 
-            <MenuPostHome icon={image?.userImage} colorBorder='#04e5f9' username={image?.username}/>
-            {/* <MenuPostHome icon={Like} likes={image?.likes} colorBorder='#3bef7a'/>
-            <MenuPostHome icon={Heart}/>         */}
+            <MenuPostHome icon={image?.userImage} colorBorder='#fff' username={image?.username}/>
+            <MenuPostHome icon={Like} likes={image?.likes} />
+            {/* <MenuPostHome icon={Save} />   */}
             
             
         </Flex>
