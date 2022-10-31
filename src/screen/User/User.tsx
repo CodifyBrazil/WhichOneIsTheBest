@@ -55,7 +55,7 @@ export const User = () => {
                 {photos.map((item, index)=>(<ImagePost urlImage={item.urlImage} likes={item.like}  key={index}/>))}
             </Flex>
             <Flex justifyContent={'center'} mt='10px' marginBottom={'30px'}>
-                <Button>Carregar mais ...</Button>
+                <Button bg={'twitter.400'}>Carregar mais ...</Button>
             </Flex>
         </Box>
     )
