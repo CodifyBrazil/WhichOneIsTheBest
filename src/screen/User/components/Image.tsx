@@ -1,6 +1,6 @@
 import { Box, Image, Flex, Text } from "@chakra-ui/react";
 import '../style.css';
-import Heart from '../../../assets/heart.png';
+import Heart from '../../../assets/love.png';
 
 type ImageType = {
     urlImage: string;
@@ -16,7 +16,7 @@ export const ImagePost = ({urlImage, likes}: ImageType) => {
         borderRadius={'4px'}
         margin='auto'>
 
-            <Flex h={'300px'} alignItems='center' bg='#fff' boxShadow={'xl'} flexDirection='column'>
+            <Flex h={'300px'} bg='#fff' boxShadow={'xl'}>
                 <Image  
                 src={urlImage}
                 objectFit='cover' 
@@ -33,9 +33,13 @@ export const ImagePost = ({urlImage, likes}: ImageType) => {
                 w={'188px'}
                 h='50px'
                 top={'247px'}
-                backdropFilter={'blur(5px)'}>
-                    <Image src={Heart} w='20px' ml={'10px'}/>
-                    <Text fontSize='13px' color={'#fff'} fontWeight={'bold'} ml={'12px'}>{likes}</Text>
+                // backdropFilter={'blur(5px)'} 
+                >
+                    <Flex w='50px' flexDirection={'column'} alignItems='center'>
+                        <Image src={Heart} w='25px' ml={'10px'}/>
+                        <Text fontSize='12px' bg={'#f74d5f'} w='30px' textAlign={'center'} borderRadius='4px' color={'#fff'} fontWeight={'bold'} fontFamily='monospace' ml={'12px'}>{likes}</Text>
+                    </Flex>
+                    
                 </Box>
             </Flex>
             

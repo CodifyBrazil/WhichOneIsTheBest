@@ -90,7 +90,7 @@ export const Post = () => {
             src={`${image?.photoImage}`}
             objectFit={'cover'}/>
 
-            <Flex
+            {/* <Flex
             display={displayAnimation}
             pos={'absolute'}
             zIndex={'999'}
@@ -109,7 +109,7 @@ export const Post = () => {
                     isStopped={displayAnimation==='none'}
                     isPaused={false}
                     />
-            </Flex>
+            </Flex> */}
         </Box>
 
         <Flex 
