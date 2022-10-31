@@ -53,10 +53,12 @@ export const User = () => {
             
             <Flex wrap={'wrap'} bg='#fafafa'>
                 {photos.map((item, index)=>(<ImagePost urlImage={item.urlImage} likes={item.like}  key={index}/>))}
+                {quantImage > 30 &&
+                <Flex justifyContent={'center'} m='auto' mt='10px' marginBottom={'30px'}>
+                    <Button bg={'twitter.400'}>Carregar mais ...</Button>
+                </Flex>}
             </Flex>
-            <Flex justifyContent={'center'} mt='10px' marginBottom={'30px'}>
-                <Button bg={'twitter.400'}>Carregar mais ...</Button>
-            </Flex>
+            
         </Box>
     )
 }
