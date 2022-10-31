@@ -20,6 +20,7 @@ export const User = () => {
     const getInfoProfile = async () => {
         setLoading(true);
         const data = await getAllInfo({username});
+        setUserProfileImage(data[0].user.profile_image.small);
         const images = data.map(item=> {
             const urlImage = item.urls.small;
             const like = item.likes;
@@ -29,7 +30,6 @@ export const User = () => {
         });
         setPhotos(images);
         setLoading(false);
-        setUserProfileImage(photos[0].userProfileImage);
         
     }
     

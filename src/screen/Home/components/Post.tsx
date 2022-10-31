@@ -1,6 +1,7 @@
 import { Box, Button, Flex, Image, useToast } from "@chakra-ui/react";
 import { useState, useContext, useEffect } from "react";
 import Lottie from "react-lottie";
+import Cookie from 'universal-cookie';
 
 import { Context } from '../../../context/Context';
 import { MenuPostPhoto } from '../../../types/types';
@@ -14,6 +15,7 @@ import { MenuPostHome } from "./MenuPostHome";
 
 
 let photos: MenuPostPhoto[] = [];
+const cookie = new Cookie;
 
 export const Post = () => {
 
@@ -23,10 +25,12 @@ export const Post = () => {
 
     useEffect(()=> {
         nextImage({});
-    }, [])
+    }, []);
 
-    const [numberImage, setNumberImage] = useState<number>(0);
-    const [page, setPage] = useState<number>(1)
+    const { valuePhoto, pagePhoto } = cookie.get('dataUser');
+
+    const [numberImage, setNumberImage] = useState<number>(valuePhoto);
+    const [page, setPage] = useState<number>(pagePhoto);
     const [image, setImage] = useState<MenuPostPhoto>();
     const [displayAnimation, setDisplayAnimation] = useState<'none'|'initial'>('none');
 
@@ -37,8 +41,6 @@ export const Post = () => {
         },2000);
     }
 
-
-
     const nextImage = async ({id, voting}:{id?:string, voting?: number}) => {
         
         if(numberImage < 27 && photos.length > 20){
@@ -46,8 +48,8 @@ export const Post = () => {
             setNumberImage(numberImage+1);
         }
         else {
-            setPage(page+1);
-            setNumberImage(0);
+            setPage(page);
+            setNumberImage(valuePhoto);
             photos = [];
             const data = await getAllInfo({page});
 
@@ -72,6 +74,9 @@ export const Post = () => {
         setImage(photos[numberImage]);
                 
     }
+
+    isLocalStorage({valuePhoto: numberImage, pagePhoto: page});
+    // console.log(cookie.get('dataUser'));
 
     return (
         <>
