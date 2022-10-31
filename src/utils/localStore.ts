@@ -19,7 +19,7 @@ export const isLocalStorage = ({session, valuePhoto, pagePhoto}: LocalStorage) =
             valuePhoto,
             pagePhoto,
         }
-        setCookie
+        
 
     }
 }
