@@ -59,11 +59,11 @@ export const ImagePost = ({urlImage, likes}: ImageType) => {
         </Box>
         
             <Modal isOpen={isOpen} onClose={onClose} size='full' closeOnEsc>
-            <ModalOverlay />
+            {/* <ModalOverlay /> */}
             <ModalContent>
-            <ModalHeader></ModalHeader>
-            <ModalCloseButton />
-                <ModalBody>
+            {/* <ModalHeader></ModalHeader> */}
+            <ModalCloseButton bg={'#fff'}/>
+                {/* <ModalBody> */}
                     <Flex h={'300px'} bg='#fff' boxShadow={'xl'}>
                         <Image  
                         src={urlImage}
@@ -83,7 +83,7 @@ export const ImagePost = ({urlImage, likes}: ImageType) => {
                             
                         </Box>
                     </Flex>
-                </ModalBody>
+                {/* </ModalBody> */}
             </ModalContent>
         </Modal>
         </>

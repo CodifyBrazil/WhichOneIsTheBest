@@ -12,7 +12,7 @@ export const User = () => {
     }, []);
 
     const [photos, setPhotos] = useState<ImagesUserProfile[]>([]);
-    const [userProfileImage, setUserProfileImage] = useState('');
+    const [userProfileImage, setUserProfileImage] = useState<string>('');
     const [quantImage, setQuantImage] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
     const { getAllInfo } = useContext(Context);
@@ -23,7 +23,7 @@ export const User = () => {
         const data = await getAllInfo({username});
         setUserProfileImage(data[0].user.profile_image.small);
         const images = data.map(item=> {
-            const urlImage = item.urls.small;
+            const urlImage = item.urls.regular;
             const like = item.likes;
             const userProfileImage = item.user.profile_image.small;
             const download_link = item.links.download;
@@ -53,7 +53,7 @@ export const User = () => {
             
             <Flex wrap={'wrap'} bg='#fafafa'>
                 {photos.map((item, index)=>(<ImagePost urlImage={item.urlImage} likes={item.like}  key={index}/>))}
-                {quantImage > 30 &&
+                {quantImage > 28 &&
                 <Flex justifyContent={'center'} m='auto' mt='10px' marginBottom={'30px'}>
                     <Button bg={'twitter.400'}>Carregar mais ...</Button>
                 </Flex>}
