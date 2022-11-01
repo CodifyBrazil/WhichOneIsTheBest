@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Spinner, useDisclosure } from "@chakra-ui/react";
+import { Box, Button, Flex, Spinner, useToast } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../../context/Context";
@@ -11,8 +11,11 @@ export const User = () => {
         getInfoProfile();
     }, []);
 
+    const toast = useToast();
+
     const [photos, setPhotos] = useState<ImagesUserProfile[]>([]);
     const [userProfileImage, setUserProfileImage] = useState<string>('');
+    const [page, setPage] = useState<number>(1);
     const [quantImage, setQuantImage] = useState<number>(0);
     const [loading, setLoading] = useState<boolean>(false);
     const { getAllInfo } = useContext(Context);
@@ -31,8 +34,16 @@ export const User = () => {
         });
         setPhotos(images);
         setLoading(false);
-        setQuantImage(images.length)
-        
+        setQuantImage(images.length);        
+    }
+
+    const LoadPhotos = () => {
+        toast({
+            title: 'Em construção',
+            status:'info',
+            duration: 1000,
+            position: 'top'
+        })
     }
     
    
@@ -55,7 +66,7 @@ export const User = () => {
                 {photos.map((item, index)=>(<ImagePost urlImage={item.urlImage} likes={item.like}  key={index}/>))}
                 {quantImage > 28 &&
                 <Flex justifyContent={'center'} m='auto' mt='10px' marginBottom={'30px'}>
-                    <Button bg={'twitter.400'}>Carregar mais ...</Button>
+                    <Button onClick={LoadPhotos} bg={'twitter.400'}>Carregar mais ...</Button>
                 </Flex>}
             </Flex>
             

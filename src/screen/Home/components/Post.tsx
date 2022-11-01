@@ -120,7 +120,7 @@ export const Post = () => {
         borderRadius={'40px'}
         alignItems={'center'}>
 
-            <MenuPostHome icon={image?.userImage} colorBorder='#fff' username={image?.username}/>
+            <MenuPostHome icon={image?.userImage} colorBorder='#f74d5f' username={image?.username}/>
             <MenuPostHome icon={Like} likes={image?.likes} />
             {/* <MenuPostHome icon={Save} />   */}
             

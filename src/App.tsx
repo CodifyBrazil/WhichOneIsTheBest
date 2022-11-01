@@ -3,11 +3,10 @@ import { ContextProvider } from './context/Context';
 import { Home } from './screen/Home/Home';
 import { User } from './screen/User/User';
 import { NotFound } from './screen/NotFound';
+import { useEffect } from 'react';
 
 
 const App = () => {
-
-  
 
   return (
     <ContextProvider>
